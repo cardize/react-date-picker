@@ -1,6 +1,26 @@
+import { useState, forwardRef } from 'react'
+import DatePicker, { registerLocale } from 'react-datepicker'
+import { tr } from "date-fns/locale"
+import 'react-datepicker/dist/react-datepicker.css'
 import './styles.css'
+registerLocale("tr", tr)
 
 const Home = () => {
+    const [startDate, setStartDate] = useState(new Date())
+    const [endDate, setEndDate] = useState(null)
+    const [monthsToShow, setMonthsToShow] = useState(1)
+
+    const onChange = (dates) => {
+        const [start, end] = dates
+        setStartDate(start)
+        setEndDate(end)
+    }
+
+
+    const onMothsToWiewChange = (event) => {
+        setMonthsToShow(event.target.value)
+    }
+
     return (
         <div className='w-full p-[30px] container mx-auto flex flex-col items-center justify-center'>
             <div className='p-[20px]'>
@@ -11,6 +31,7 @@ const Home = () => {
                         name="months"
                         id="months"
                         form="months"
+                        onChange={onMothsToWiewChange}
                     >
                         <option
                             key={1}
@@ -48,6 +69,16 @@ const Home = () => {
                 </div>
 
             </div>
+            <DatePicker
+                onChange={onChange}
+                startDate={startDate}
+                endDate={endDate}
+                minDate={new Date()}
+                monthsShown={monthsToShow}
+                locale={tr}
+                selectsRange
+                inline
+            />
 
         </div>
 
@@ -55,3 +86,4 @@ const Home = () => {
 }
 
 export default Home
+
