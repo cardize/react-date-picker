@@ -67,7 +67,3 @@
 :hover.react-datepicker__day--selected, :hover.react-datepicker__day--selecting, :hover.react-datepicker__day--range-start, :hover.react-datepicker__day--range-end, :hover.react-datepicker__day--in-range{
     background-color: #63C328;
 }
-
-
-
-/* react-datepicker__day--range-start react-datepicker__day--range-end react-datepicker__day--in-range */
